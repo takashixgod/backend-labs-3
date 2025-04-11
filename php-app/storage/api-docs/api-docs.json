@@ -1,0 +1,181 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel API Документація",
+        "description": "Swagger OpenAPI для лабораторної роботи",
+        "contact": {
+            "email": "igor@example.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/subscribers": {
+            "get": {
+                "tags": [
+                    "Subscribers"
+                ],
+                "summary": "Получить список подписчиков",
+                "operationId": "7a4ec4a0bed9cb1bb0f252aa5fde1ac4",
+                "parameters": [
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Поле для сортировки",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "direction",
+                        "in": "query",
+                        "description": "Направление сортировки",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Список успешно получен"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Subscribers"
+                ],
+                "summary": "Создать подписчика",
+                "operationId": "cdbdfb57ab947416e0ecf36c82ed29e8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Игорь"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "igor@example.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Подписчик успешно создан"
+                    }
+                }
+            }
+        },
+        "/api/subscribers/{id}": {
+            "get": {
+                "tags": [
+                    "Subscribers"
+                ],
+                "summary": "Показать подписчика",
+                "operationId": "cb2ebc56c624405a54492302dbb13aee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID подписчика",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Подписчик найден"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Subscribers"
+                ],
+                "summary": "Обновить подписчика",
+                "operationId": "f7edc93245402315d3f961da3ec023a6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID подписчика",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Игорек"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "igorek@example.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Успешно обновлён"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Subscribers"
+                ],
+                "summary": "Удалить подписчика",
+                "operationId": "d5182899aaacc15b1b2a04f7808dd746",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID подписчика",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Удалено успешно"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Subscribers",
+            "description": "Управление подписчиками"
+        }
+    ]
+}
